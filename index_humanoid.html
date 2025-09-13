@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Small Multimodal Large Language Models in Human Robot Interaction">
+    <meta name="keywords" content="Large Language Models, text-to-image generation, text-to-music generation, speech conversation, unified llm">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Small Multimodal LLMs in Human Robot Interaction</title>
+
+    <!-- <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-PYVRSFMDRL');
+    </script> -->
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link rel="icon" href="./static/images/favicon.svg.png">
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <link rel="stylesheet" href="./static/css/index-gradio.css">
+    <link rel="stylesheet" href="./static/css/live_theme.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <!-- <h1 class="title is-1 publication-title"
+                            style="display: flex;flex-direction: row;align-items: center;justify-content: center;margin-bottom: 5px;">
+                            <img src="./static/images/logo.png" width="110" height="110"
+                                style="margin-right: 20px;">
+                            AnyGPT:
+                        </h1> -->
+                        <h1 class="title is-2 publication-title" style="width:1200px">Small Multimodal LLMs in Human Robot Interaction</h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                Aamir Ahmad Ansari, Tan Viet Tuyen Nguyen</span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors" style="margin-top: 10px;">
+                            <span class="author-block">University of Southampton </span>
+                        </div>
+
+    
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <span class="link-block">
+                                    <a href="#"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>Paper</span>
+                                    </a>
+                                </span>
+
+                                <!-- <span class="link-block">
+                                    <a href="https://acc414b22d6839d28f.gradio.live" target="_blank"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fa fa-laugh"></i>
+                                        </span>
+                                        <span>Demo</span>
+                                    </a>
+                                </span> -->
+
+                                <span class="link-block">
+                                    <a href="#"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+
+
+                                <span class="link-block">
+                                    <a href="#" target="_blank"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fa fa-database"></i>
+                                        </span>
+                                        <span>Dataset</span>
+                                    </a>
+                                </span>
+
+                                <span class="link-block">
+                                    <a href="index.html"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                        <span>Skeleton</span>
+                                    </a>
+                                </span>
+
+                                <!-- <span class="link-block">
+                                    <a href="https://www.bilibili.com/video/BV1qm411S7tk/"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon"> -->
+                                            <!-- <i class="fab fa-youtube"></i> -->
+                                            <img src="static/images/bilibili.svg" alt="Bilibili">
+                                        <!-- </span>
+                                        <span>Bilibili</span>
+                                    </a>
+                                </span> -->
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section class="section">
+        <div class="container is-max-desktop"> -->
+            <!-- Paper video. -->
+            <!-- <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-2">Video Presentation</h2>
+                    <div class="publication-video">
+                        <iframe src="https://www.youtube.com/embed/oW3E3pIsaRg"
+                                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div> -->
+            <!--/ Paper video. -->
+        <!-- </div>
+    </section> -->
+
+
+   <!-- 
+
+    <section class="section">
+        <div class="container is-max-desktop">
+           
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-2">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                           To be added
+                        </p>
+                    </div>
+                </div>
+            </div>
+        
+            <br>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+
+            <div class="columns is-centered has-text-centered">
+                <h2 class="title is-2">Method</h2>
+                <br>
+            </div>
+
+        <# Architecture #>
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                    <h4 class="title is-3">• Architecture</h4>
+
+                    <div class="content has-text-justified">
+                        <img class="columns is-centered has-text-centered" src="./static/images/model.png" alt="Teaser"
+                            width="95%" style="margin:0 auto">
+                        <br>
+                        <figcaption>
+                            <p style="text-align: center;">
+                                <font color="061E61">
+                                    <b>Figure 1:</b> An overview of the AnyGPT model architecture. All modalities are tokenized into discrete tokens, upon which the LLM performs multimodal understanding and generation autoregressively. Only data pre-processing and post-processing are required, with the model's architecture and training objectives remaining unaltered.
+                                </font>
+                            </p>
+                        </figcaption>
+                        <br>
+                        <p>
+                            
+                        </p>
+                        <br>
+                    </div>
+                    <br />
+
+                </div>
+            </div>
+
+
+            <# Instruction #>
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3">• AnyInstruct Dataset Synthesis Process</h2>
+
+                    <div class="content has-text-justified">
+                        <p>
+
+                        </p>
+                        <br>
+                        <img class="columns is-centered has-text-centered" src="./static/images/data_construction.jpg"
+                            alt="Teaser" width="100%" style="margin:0 auto">
+                        <br>
+                        <figcaption>
+                            <p style="text-align: center;">
+                                <font color="061E61">
+                                    <b>Figure 4:</b> 
+                                    The construction process of the multimodal interleaved instruction dataset AnyInstruct is divided into two stages: Generation of text-based conversations incorporating multimodal elements and Text-to-Multimodality Conversion. The first stage generates topics, scenarios, and textual dialogues, while the second stage produces the final multimodal dialogues.
+                                </font>
+                            </p>
+                        </figcaption>
+                    </div>
+                    <br />
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+-->
+
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+
+            <div class="columns is-centered has-text-centered">
+                <h2 class="title is-2">Demonstrations</h2>
+                <br>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                    <br />
+
+                    <!--            Example-1-->
+                    <h3 class="title is-4" style="margin-top: 0em">• Example-1: Text-Motion Generation</h3>
+
+                    <div class="content has-text-justified" style="width: 70pm">
+
+                        <div class="content has-text-justified" style="width: 70pm;margin-top: 1.5em">
+
+                            <div class="wrapper svelte-nab2ao"
+                                style="box-sizing: border-box;border-width: 2px;border-style: solid;border-color: #f66c0f;border-radius: 11px;padding: 25px;padding-top: 30px;padding-bottom: 30px;">
+
+                                <div class="message-wrap svelte-1uvwjgr" style="width: 100%;">
+                                    <div class="md svelte-9tftx4 chatbot" style="text-align: left">
+                                        <!-- <p style="margin-top: 0.5em;">voice prompt (to clone): </p> -->
+                                        <!-- <p> 
+                                        </p> -->
+                                    </div>
+                                    <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                                alt="avatar-user">
+                                        </div>
+                                        <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <!-- 下面的span靠右对齐 -->
+                                            <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                               <p>Could you generate a motion of a person doing a boxing routine with hands and leg.
+                                                </p>
+                                                <!-- <p style="color: gray; font-size: 1.0em;">(Transcription: write a spring
+                                                    poem)</p> -->
+                                            </span>
+                                        </div>
+                                    </div> 
+
+
+                                    <div class="message-row bot-row svelte-1uvwjgr">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                                alt="avatar-bot">
+                                        </div>
+                                        <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <span class="md svelte-9tftx4 chatbot">
+                                                <!-- <p><video width="640" height="360" autoplay muted preload="auto" loop>
+                                                    <source src="./static/videos/001169_new_ZOOM.mp4" type="video/mp4">
+                                                    Your browser does not support the video tag.
+                                                    </video> -->
+                                                <img style="display: inline-block;width: 640px;height: 450px;float: left;margin-top:0.7em;"
+                                                    src="./static/images/text-to-motion1_humanoid_time.png">
+                                                </p>
+                                                <!-- <p style="color: gray; font-size: 1.0em;">(Transcription: </p>
+                                                <p style="color: gray; font-size: 1.0em;">
+                                                    Spring's beauty,<br>
+                                                    The grass is green,<br>
+                                                    Colors abound,<br>
+                                                    A blooming spring we'll see,<br>
+                                                    Nature's miracle,<br>
+                                                    A new season of grace,<br>
+                                                    Spring's here, it's Spring!)<br>
+                                                </p> -->
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content has-text-justified" style="width: 70pm">
+
+                        <div class="content has-text-justified" style="width: 70pm;margin-top: 1.5em">
+
+                            <div class="wrapper svelte-nab2ao"
+                                style="box-sizing: border-box;border-width: 2px;border-style: solid;border-color: #f66c0f;border-radius: 11px;padding: 25px;padding-top: 30px;padding-bottom: 30px;">
+
+                                <div class="message-wrap svelte-1uvwjgr" style="width: 100%;">
+                                    <div class="md svelte-9tftx4 chatbot" style="text-align: left">
+                                        <!-- <p style="margin-top: 0.5em;">angry voice prompt1 (to clone): </p>
+                                        <p><audio playsinline="" controls="">
+                                                <source type="audio/wav" src="./static/cases/example6/6-2-2.wav">
+                                            </audio>
+                                        </p> -->
+                                    </div>
+                                    <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                                alt="avatar-user">
+                                        </div>
+                                        <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <!-- 下面的span靠右对齐 -->
+                                            <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                                <p>Could you generate a motion of a person performing a butterfly stroke while swimming.
+                                                </p>
+                                                <!-- <p style="color: gray; font-size: 1.0em;">(Transcription: Generate an
+                                                    angry dramatic character line)</p> -->
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="message-row bot-row svelte-1uvwjgr">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                                alt="avatar-bot">
+                                        </div>
+                                        <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <span class="md svelte-9tftx4 chatbot">
+                                                <p><img style="display: inline-block;width: 640px;height: 400px;float: left;margin-top:0.7em;"
+                                                    src="./static/images/text-to-motion2_humanoid_time.png">
+                                                </p>
+                                                <!-- <p style="color: gray; font-size: 1.0em;">(Transcription: I'm not going
+                                                    to take this anymore! I know it's a long-running joke but please,
+                                                    let me live in peace!)
+                                                </p> -->
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--          End  Example-1-->
+
+
+                    <!--            Example-2-->
+                    <h3 class="title is-4" style="margin-top: 3em">• Example-2: Moiton to Text</h3>
+
+                    <div class="content has-text-justified" style="width: 70pm">
+
+                        <div class="content has-text-justified" style="width: 70pm;margin-top: 1.5em">
+
+                            <div class="wrapper svelte-nab2ao"
+                                style="box-sizing: border-box;border-width: 2px;border-style: solid;border-color: #f66c0f;border-radius: 11px;padding: 25px;padding-top: 30px;padding-bottom: 30px;">
+
+                                <div class="message-wrap svelte-1uvwjgr" style="width: 100%;">
+                                    <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                                alt="avatar-user">
+                                        </div>
+                                        <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <!-- 下面的span靠右对齐 -->
+                                            <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                                <p>Summarize the sequence of actions being performed.<br><br>
+                                                    <img style="display: inline-block;width: 640px;height: 450px;float: left;margin-top:0.7em;"
+                                                    src="./static/images/motion-to-text1_humanoid_time.png">
+                                                </p>
+                                                <!-- <p style="color: gray; font-size: 1.0em;">(Transcription: I've been too
+                                                    tired recently. Where do you think suitable to relax?)</p> -->
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="message-row bot-row svelte-1uvwjgr">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                                alt="avatar-bot">
+                                        </div>
+                                        <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <span class="md svelte-9tftx4 chatbot">
+                                                <p>In the action sequence, a person jumps up and down multiple times.
+                                                </p>
+                                                <!-- <p style="color: gray; font-size: 1.0em;">(Transcription: How about a
+                                                    serene lakeside?)
+                                                </p>
+                                                <img style="display: inline-block;width: 250px;max-height: 400px;float: left;margin-top:0.7em;"
+                                                    src="./static/cases/example7/7-1-1.jpg"> -->
+                                            </span>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                                alt="avatar-user">
+                                        </div>
+                                        <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <!-- 下面的span靠右对齐 -->
+                                            <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                                <p>Describe the motor activity captured here.<br><br><img style="display: inline-block;width: 640px;height: 450px;float: left;margin-top:0.7em;"
+                                                    src="./static/images/motion-to-text2_humanoid_time.png">
+                                                </p>
+                                                <!-- <p style="color: gray; font-size: 1.0em;">(Transcription: Can you give
+                                                    me some relaxing music?)</p> -->
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="message-row bot-row svelte-1uvwjgr">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                                alt="avatar-bot">
+                                        </div>
+                                        <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <span class="md svelte-9tftx4 chatbot">
+                                                <p>
+                                                    Here, a person moves their left arm in a circular motion in the air.
+                                                </p>
+                                                <!-- <p style="color: gray; font-size: 1.0em;">(Transcription: Enjoy this
+                                                    peaceful setting.)
+                                                </p>
+                                                <p><audio playsinline="" controls="">
+                                                        <source type="audio/wav"
+                                                            src="./static/cases/example7/7-1-5.wav">
+                                                    </audio>
+                                                </p> -->
+                                            </span>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="title is-4" style="margin-top: 3em">• Example-3: Motion Reasoning</h3>
+
+                    <div class="content has-text-justified" style="width: 70pm">
+
+                        <div class="content has-text-justified" style="width: 70pm;margin-top: 1.5em">
+
+                            <div class="wrapper svelte-nab2ao"
+                                style="box-sizing: border-box;border-width: 2px;border-style: solid;border-color: #f66c0f;border-radius: 11px;padding: 25px;padding-top: 30px;padding-bottom: 30px;">
+
+                                <div class="message-wrap svelte-1uvwjgr" style="width: 100%;">
+                                    <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                                alt="avatar-user">
+                                        </div>
+                                        <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <!-- 下面的span靠右对齐 -->
+                                            <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                                <p>SHAF, can you describe what the person is doing in this motion? <br><br>
+                                                  <img style="display: inline-block;width: 640px;height: 450px;float: left;margin-top:0.7em;"
+                                                    src="./static/images/motion-reasoning1_humanoid_time.png">
+                                                </p>
+                                                
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="message-row bot-row svelte-1uvwjgr">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                                alt="avatar-bot">
+                                        </div>
+                                        <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <span class="md svelte-9tftx4 chatbot">
+                                                <p>The person is walking forward, then they turn around and walk back slowly, and finally, they squat down and get back up.</p>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                                alt="avatar-user">
+                                        </div>
+                                        <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <!-- 下面的span靠右对齐 -->
+                                            <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                                <p>Why does the person turn around after running forward?</p>
+                                                
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="message-row bot-row svelte-1uvwjgr">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                                alt="avatar-bot">
+                                        </div>
+                                        <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <span class="md svelte-9tftx4 chatbot">
+                                                <p>The person might turn around to return to where they started or to change direction quickly.
+                                                </p>
+                                            </span>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                                alt="avatar-user">
+                                        </div>
+                                        <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <!-- 下面的span靠右对齐 -->
+                                            <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                                <p>Why do you think the person is walking back slowly?</p>
+                                                
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="message-row bot-row svelte-1uvwjgr">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                                alt="avatar-bot">
+                                        </div>
+                                        <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <span class="md svelte-9tftx4 chatbot">
+                                                <p>Walking back slowly might be to make sure they're careful or to focus on something ahead.
+                                                </p>
+                                            </span>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                                alt="avatar-user">
+                                        </div>
+                                        <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <!-- 下面的span靠右对齐 -->
+                                            <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                                <p>What might the person be doing when they bend down and get back up?</p>
+                                                
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="message-row bot-row svelte-1uvwjgr">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                                alt="avatar-bot">
+                                        </div>
+                                        <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <span class="md svelte-9tftx4 chatbot">
+                                                <p>Bending down and getting back up could be part of a exercise routine or a way to move comfortably while performing a task.
+                                                </p>
+                                            </span>
+
+                                        </div>
+                                    </div>
+
+
+                                    
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--          End  Example-2-->
+
+
+                    <!-- Motion Reasoning Example 2-->
+
+
+                    <div class="content has-text-justified" style="width: 70pm">
+
+                        <div class="content has-text-justified" style="width: 70pm;margin-top: 1.5em">
+
+                            <div class="wrapper svelte-nab2ao"
+                                style="box-sizing: border-box;border-width: 2px;border-style: solid;border-color: #f66c0f;border-radius: 11px;padding: 25px;padding-top: 30px;padding-bottom: 30px;">
+
+                                <div class="message-wrap svelte-1uvwjgr" style="width: 100%;">
+                                    <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                                alt="avatar-user">
+                                        </div>
+                                        <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <!-- 下面的span靠右对齐 -->
+                                            <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                                <p>SHAF, what is the person doing in this action?  <br><br>
+                                                   <img style="display: inline-block;width: 640px;height: 450px;float: left;margin-top:0.7em;"
+                                                    src="./static/images/motion-reasoning2_humanoid_time.png">
+                                                </p>
+                                                
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="message-row bot-row svelte-1uvwjgr">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                                alt="avatar-bot">
+                                        </div>
+                                        <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <span class="md svelte-9tftx4 chatbot">
+                                                <p>The person is standing on one leg and kicking the other leg out in front of them, then they return to standing position.</p>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                                alt="avatar-user">
+                                        </div>
+                                        <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <!-- 下面的span靠右对齐 -->
+                                            <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                                <p>Why do you think the person is kicking like this?</p>
+                                                
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="message-row bot-row svelte-1uvwjgr">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                                alt="avatar-bot">
+                                        </div>
+                                        <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <span class="md svelte-9tftx4 chatbot">
+                                                <p>The kicking could be part of a dance or exercise routine to improve balance and coordination.
+                                                </p>
+                                            </span>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                                alt="avatar-user">
+                                        </div>
+                                        <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <!-- 下面的span靠右对齐 -->
+                                            <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                                <p>What happens after the person kicks with the right leg?</p>
+                                                
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="message-row bot-row svelte-1uvwjgr">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                                alt="avatar-bot">
+                                        </div>
+                                        <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <span class="md svelte-9tftx4 chatbot">
+                                                <p>After kicking with the right leg, the person kicks with the left.
+                                                </p>
+                                            </span>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                                alt="avatar-user">
+                                        </div>
+                                        <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <!-- 下面的span靠右对齐 -->
+                                            <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                                <p>Do you think this is a kind of dance or maybe training?</p>
+                                                
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="message-row bot-row svelte-1uvwjgr">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                                alt="avatar-bot">
+                                        </div>
+                                        <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <span class="md svelte-9tftx4 chatbot">
+                                                <p>Yes, it could be either a dance move or a simple training exercise for balance and coordination."
+                                                </p>
+                                            </span>
+
+                                        </div>
+                                    </div>
+
+
+                                    
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--            Example-3-->
+                    <h3 class="title is-4" style="margin-top: 3em">• Example-4: Image to Text</h3>
+
+                    <div class="content has-text-justified" style="width: 70pm">
+
+                        <div class="content has-text-justified" style="width: 70pm;margin-top: 1.5em">
+
+                            <div class="wrapper svelte-nab2ao"
+                                style="box-sizing: border-box;border-width: 2px;border-style: solid;border-color: #f66c0f;border-radius: 11px;padding: 25px;padding-top: 30px;padding-bottom: 30px;">
+
+                                <div class="message-wrap svelte-1uvwjgr" style="width: 100%;">
+                                    <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                                alt="avatar-user">
+                                        </div>
+                                        <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <!-- 下面的span靠右对齐 -->
+                                            <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                                <p>Describe this image. <br><br><img style="display: inline-block;width: 450px;max-height: 600px;float: right;margin-top:0.7em"
+                                                src="./static/images/people_run_2.jpg">
+                                                </p>
+                        
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="message-row bot-row svelte-1uvwjgr">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                                alt="avatar-bot">
+                                        </div>
+                                        <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <span class="md svelte-9tftx4 chatbot">
+                                                <p>
+                                                    A man and a woman are jogging on a path in a park, with the man wearing a blue t-shirt and the woman in an orange top. They have determined expressions on their faces. The man is on the left, and the woman is on the right.
+                                                </p>
+                                               
+                                            </span>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- I2T Example 2-->
+
+
+                    <div class="content has-text-justified" style="width: 70pm">
+
+                        <div class="content has-text-justified" style="width: 70pm;margin-top: 1.5em">
+
+                            <div class="wrapper svelte-nab2ao"
+                                style="box-sizing: border-box;border-width: 2px;border-style: solid;border-color: #f66c0f;border-radius: 11px;padding: 25px;padding-top: 30px;padding-bottom: 30px;">
+
+                                <div class="message-wrap svelte-1uvwjgr" style="width: 100%;">
+                                    <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                                alt="avatar-user">
+                                        </div>
+                                        <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <!-- 下面的span靠右对齐 -->
+                                            <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                                <p>Describe this image. <br><br><img style="display: inline-block;width: 250px;max-height: 400px;float: right;margin-top:0.7em"
+                                                src="./static/images/man_squat.jpg">
+                                                </p>
+                        
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="message-row bot-row svelte-1uvwjgr">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                                alt="avatar-bot">
+                                        </div>
+                                        <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <span class="md svelte-9tftx4 chatbot">
+                                                <p>
+                                                    A person is performing a barbell squat with a loaded barbell. The person is wearing a gray t-shirt and gray sneakers. They are squatting down with their hands gripping the barbell, which is loaded with weights behind their head. The person's stance is neutral, and the background is a plain white color.
+                                                </p>
+                                               
+                                            </span>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- I2T Example 2-->
+                    <!--            Example-4-->
+                    <h3 class="title is-4" style="margin-top: 3em">• Example-5: Text to Image</h3>
+
+                    <div class="content has-text-justified" style="width: 70pm">
+
+                        <div class="content has-text-justified" style="width: 70pm;margin-top: 1.5em">
+
+                            <div class="wrapper svelte-nab2ao"
+                                style="box-sizing: border-box;border-width: 2px;border-style: solid;border-color: #f66c0f;border-radius: 11px;padding: 25px;padding-top: 30px;padding-bottom: 30px;">
+
+                                <div class="message-wrap svelte-1uvwjgr" style="width: 100%;">
+                                    <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                                alt="avatar-user">
+                                        </div>
+                                        <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <!-- 下面的span靠右对齐 -->
+                                            <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                                <p>Generate an image that matches this description, A figure in a dark armored suit wields a red lightsaber amidst a war-tored landscape, suggesting a formidable presence.
+                                                </p>
+                                            
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="message-row bot-row svelte-1uvwjgr">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                                alt="avatar-bot">
+                                        </div>
+                                        <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <span class="md svelte-9tftx4 chatbot">
+                                                <p><img style="display: inline-block;width: 250px;max-height: 400px;float: right;margin-top:0.7em"
+                                                src="./static/images/t2i_1.png">
+                                                </p>
+                                            </span>
+
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                                alt="avatar-user">
+                                        </div>
+                                        <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                        
+                                            <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                                <p><audio playsinline="" controls="">
+                                                        <source type="audio/wav"
+                                                            src="./static/cases/example9/9-1-3.wav">
+                                                    </audio>
+                                                </p>
+                                                <p style="color: gray; font-size: 1.0em;">(Transcription: Generate a music for it.)</p>
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="message-row bot-row svelte-1uvwjgr">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                                alt="avatar-bot">
+                                        </div>
+                                        <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <span class="md svelte-9tftx4 chatbot">
+                                                <p><audio playsinline="" controls="">
+                                                        <source type="audio/wav"
+                                                            src="./static/cases/example9/9-1-4.wav">
+                                                    </audio>
+                                                </p>
+                                            </span>
+
+                                        </div>
+                                    </div> -->
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--          End  Example-4-->
+
+
+                    <div class="content has-text-justified" style="width: 70pm">
+
+                        <div class="content has-text-justified" style="width: 70pm;margin-top: 1.5em">
+
+                            <div class="wrapper svelte-nab2ao"
+                                style="box-sizing: border-box;border-width: 2px;border-style: solid;border-color: #f66c0f;border-radius: 11px;padding: 25px;padding-top: 30px;padding-bottom: 30px;">
+
+                                <div class="message-wrap svelte-1uvwjgr" style="width: 100%;">
+                                    <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                                alt="avatar-user">
+                                        </div>
+                                        <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <!-- 下面的span靠右对齐 -->
+                                            <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                                <p>Generate an image of a serene young woman practicing yoga on a mat, in a bright minimal studio with soft natural sunlight streaming through large windows. She is in a graceful pose, wearing modern athletic wear in calming pastel colors. The background is simple and uncluttered, emphasizing peace, balance, and mindfulness.
+                                            
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="message-row bot-row svelte-1uvwjgr">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                                alt="avatar-bot">
+                                        </div>
+                                        <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <span class="md svelte-9tftx4 chatbot">
+                                                <p><img style="display: inline-block;width: 250px;max-height: 400px;float: right;margin-top:0.7em"
+                                                src="./static/images/t2i_athlete.png">
+                                                </p>
+                                            </span>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--            Example-5-->
+                    <h3 class="title is-4" style="margin-top: 3em">• Example-6: Motion to Image </h3>
+
+                    <div class="content has-text-justified" style="width: 70pm">
+
+                        <div class="wrapper svelte-nab2ao"
+                            style="box-sizing: border-box;border-width: 2px;border-style: solid;border-color: #f66c0f;border-radius: 11px;padding: 25px;padding-top: 30px;padding-bottom: 30px;">
+
+                            <div class="message-wrap svelte-1uvwjgr" style="width: 100%;">
+
+                                <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                            alt="avatar-user">
+                                    </div>
+                                    <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <!-- 下面的span靠右对齐 -->
+                                        <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                            <p>Hi SHAF, I’m working on simulating natural eating motions for a video game avatar. Can you show the motion for pouring a drink with the right hand, then reaching left for something else? Please generate an image for this motion.<br><br>
+                                            <img style="display: inline-block;width: 640px;height: 450px;float: left;margin-top:0.7em;"
+                                                    src="./static/images/motion-to-image2_humanoid (2).png">
+                                            </p>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="message-row bot-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                            alt="avatar-bot">
+                                    </div>
+                                    <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p>Here’s an image showing a character taking a drink with one hand, then reaching for another item with the other hand:<br><br>
+                                            <img style="display: inline-block;width: 250px;max-height: 400px;float: left;"
+                                                src="./static/images/m2i_new_good.png"></p>
+
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                            alt="avatar-user">
+                                    </div>
+                                    <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <!-- 下面的span靠右对齐 -->
+                                        <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                            <p>If I animate this in the game, should the avatar pause between actions or make the sequence continuous?".</p>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="message-row bot-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                            alt="avatar-bot">
+                                    </div>
+                                    <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p>In games, it often makes sense for the avatar to pause between actions for a moment of balance—especially if they’re new to the drink sequence.
+                                            </p>
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content has-text-justified" style="width: 70pm">
+
+                        <div class="wrapper svelte-nab2ao"
+                            style="box-sizing: border-box;border-width: 2px;border-style: solid;border-color: #f66c0f;border-radius: 11px;padding: 25px;padding-top: 30px;padding-bottom: 30px;">
+
+                            <div class="message-wrap svelte-1uvwjgr" style="width: 100%;">
+
+                                <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                            alt="avatar-user">
+                                    </div>
+                                    <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <!-- 下面的span靠右对齐 -->
+                                        <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                            <p>Hey SHAF, here's a picture of me trying a warm-up at my yoga class. Can you generate an image of the next motion I should try?<br><br>
+                                            
+                                               <img style="display: inline-block;width: 640px;height: 450px;float: left;margin-top:0.7em;"
+                                                    src="./static/images/motion-to-image1_humanoid (2).png">
+                                            </p>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="message-row bot-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                            alt="avatar-bot">
+                                    </div>
+                                    <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p>Great posture! To spice up your warm-up, move your raised arm as if you're running in place. Like this:<br><br>
+                                            <img style="display: inline-block;width: 250px;max-height: 400px;float: left;"
+                                                src="./static/images/6.jpg">
+                                            </p>
+
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                            alt="avatar-user">
+                                    </div>
+                                    <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <!-- 下面的span靠右对齐 -->
+                                        <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                            <p>Thanks, SHAF! Should I keep my core tight while moving my arm?</p>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="message-row bot-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                            alt="avatar-bot">
+                                    </div>
+                                    <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p>Yes! Engaging your core helps you stay balanced and makes the movement more effective. Keep breathing steady, too!
+                                            </p>
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--          End  Example-5-->
+
+                    <!--            Example-6-->
+                    <!-- <h3 class="title is-4" style="margin-top: 3em">• Example-6: Text + Image → Music</h3>
+                    <div class="content has-text-justified" style="width: 70pm">
+
+                        <div class="wrapper svelte-nab2ao"
+                            style="box-sizing: border-box;border-width: 2px;border-style: solid;border-color: #f66c0f;border-radius: 11px;padding: 25px;padding-top: 30px;padding-bottom: 30px;">
+
+                            <div class="message-wrap svelte-1uvwjgr" style="width: 100%;">
+
+                                <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                            alt="avatar-user">
+                                    </div>
+                                    <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;"> -->
+                                        <!-- 下面的span靠右对齐 -->
+                                        <!-- <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                            <p>Generate a piece of background music for this image.</p>
+                                            <img style="display: inline-block;width: 250px;max-height: 400px;float: right;"
+                                                src="./static/cases/example2/2-1-1.jpg">
+                                        </span>
+                                    </div>
+                                </div>
+
+
+                                <div class="message-row bot-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                            alt="avatar-bot">
+                                    </div>
+                                    <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p><audio playsinline="" controls="">
+                                                    <source type="audio/wav" src="./static/cases/example2/2-1-1.wav">
+                                                </audio>
+                                            </p>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div>(case1)</div>
+                                <div class="message-row bot-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                            alt="avatar-bot">
+                                    </div>
+                                    <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p><audio playsinline="" controls="">
+                                                    <source type="audio/wav" src="./static/cases/example2/2-1-2.wav">
+                                                </audio>
+                                            </p>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div>(case2)</div>
+                                <div class="message-row bot-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                            alt="avatar-bot">
+                                    </div>
+                                    <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p><audio playsinline="" controls="">
+                                                    <source type="audio/wav" src="./static/cases/example2/2-1-3.wav">
+                                                </audio>
+                                            </p>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div>(case3)</div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content has-text-justified" style="width: 70pm">
+
+                        <div class="wrapper svelte-nab2ao"
+                            style="box-sizing: border-box;border-width: 2px;border-style: solid;border-color: #f66c0f;border-radius: 11px;padding: 25px;padding-top: 30px;padding-bottom: 30px;">
+
+                            <div class="message-wrap svelte-1uvwjgr" style="width: 100%;">
+
+                                <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                            alt="avatar-user">
+                                    </div>
+                                    <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;"> -->
+                                        <!-- 下面的span靠右对齐 -->
+                                        <!-- <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                            <p>Generate a piece of music based on the picture's emotion.</p>
+                                            <img style="display: inline-block;width: 250px;max-height: 400px;float: right;"
+                                                src="./static/cases/example2/2-2-1.jpg">
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="message-row bot-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                            alt="avatar-bot">
+                                    </div>
+                                    <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p><audio playsinline="" controls="">
+                                                    <source type="audio/wav" src="./static/cases/example2/2-2-1.wav">
+                                                </audio>
+                                            </p>
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div> -->
+                    <!--          End  Example-6-->
+
+                    <!--            Example-7-->
+                    <!-- <h3 class="title is-4" style="margin-top: 3em">• Example-7: Text + Image → Text + Music</h3>
+                    <div class="content has-text-justified" style="width: 70pm">
+
+                        <div class="wrapper svelte-nab2ao"
+                            style="box-sizing: border-box;border-width: 2px;border-style: solid;border-color: #f66c0f;border-radius: 11px;padding: 25px;padding-top: 30px;padding-bottom: 30px;">
+
+                            <div class="message-wrap svelte-1uvwjgr" style="width: 100%;">
+
+                                <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                            alt="avatar-user">
+                                    </div>
+                                    <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                       
+                                        <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                            <p>Can you translate the emotion in this picture into music?</p>
+                                            <img style="display: inline-block;width: 250px;max-height: 400px;float: right;"
+                                                src="./static/cases/example3/3-1-1.jpg">
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="message-row bot-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                            alt="avatar-bot">
+                                    </div>
+                                    <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p>The image exudes tranquility and meditation.</p>
+                                            <p><audio playsinline="" controls="">
+                                                    <source type="audio/wav" src="./static/cases/example3/3-1-1.wav">
+                                                </audio>
+                                            </p>
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content has-text-justified" style="width: 70pm;margin-top: 1.5em">
+
+                        <div class="wrapper svelte-nab2ao"
+                            style="box-sizing: border-box;border-width: 2px;border-style: solid;border-color: #f66c0f;border-radius: 11px;padding: 25px;padding-top: 30px;padding-bottom: 30px;">
+
+                            <div class="message-wrap svelte-1uvwjgr" style="width: 100%;">
+
+                                <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                            alt="avatar-user">
+                                    </div>
+                                    <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                      
+                                        <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                            <p>Understand this picture, then generate a piece of matching music.
+                                                Please think step by step.</p>
+                                            <img style="display: inline-block;width: 250px;max-height: 400px;float: right;"
+                                                src="./static/cases/example3/3-2-1.jpg">
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="message-row bot-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                            alt="avatar-bot">
+                                    </div>
+                                    <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p>The painting is abstract with bold use of color. Here's the music</p>
+                                            <p><audio playsinline="" controls="">
+                                                    <source type="audio/wav" src="./static/cases/example3/3-2-1.wav">
+                                                </audio>
+                                            </p>
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div> -->
+                    <!--          End  Example-7-->
+
+
+                    <!--            Example-8-->
+                    <!-- <h3 class="title is-4" style="margin-top: 3em">• Example-8: Text + Music → Text + Image</h3>
+                    <div class="content has-text-justified" style="width: 70pm">
+
+                        <div class="content has-text-justified" style="width: 70pm;margin-top: 1.5em">
+
+                            <div class="wrapper svelte-nab2ao"
+                                style="box-sizing: border-box;border-width: 2px;border-style: solid;border-color: #f66c0f;border-radius: 11px;padding: 25px;padding-top: 30px;padding-bottom: 30px;">
+
+                                <div class="message-wrap svelte-1uvwjgr" style="width: 100%;">
+
+                                    <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                                alt="avatar-user">
+                                        </div>
+                                        <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                         
+                                            <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                                <p>What instrument is in this piece of music?</p>
+                                                <p><audio playsinline="" controls="">
+                                                        <source type="audio/wav"
+                                                            src="./static/cases/example4/4-2-1.wav">
+                                                    </audio>
+                                                </p>
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="message-row bot-row svelte-1uvwjgr">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                                alt="avatar-bot">
+                                        </div>
+                                        <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <span class="md svelte-9tftx4 chatbot">
+                                                <p>The bass drum is prominently featured, often indicating a strong
+                                                    beat in music.</p>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                                alt="avatar-user">
+                                        </div>
+                                        <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                                <p>Draw a picture about it.</p>
+                                                </p>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="message-row bot-row svelte-1uvwjgr">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                                alt="avatar-bot">
+                                        </div>
+                                        <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <span class="md svelte-9tftx4 chatbot">
+                                                <p></p>
+                                                <img style="display: inline-block;width: 250px;max-height: 400px;float: left;"
+                                                    src="./static/cases/example4/4-2-1.jpg">
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="wrapper svelte-nab2ao"
+                            style="box-sizing: border-box;border-width: 2px;border-style: solid;border-color: #f66c0f;border-radius: 11px;padding: 25px;padding-top: 30px;padding-bottom: 30px;">
+
+                            <div class="message-wrap svelte-1uvwjgr" style="width: 100%;">
+
+                                <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                            alt="avatar-user">
+                                    </div>
+                                    <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                    
+                                        <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                            <p>Can you find an image to match this song's mood?</p>
+                                            <p><audio playsinline="" controls="">
+                                                    <source type="audio/wav" src="./static/cases/example3/3-1-1.wav">
+                                                </audio>
+                                            </p>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="message-row bot-row svelte-1uvwjgr">
+                                    <div class="avatar-container svelte-1uvwjgr">
+                                        <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                            alt="avatar-bot">
+                                    </div>
+                                    <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                        style="border-style: solid;">
+                                        <span class="md svelte-9tftx4 chatbot">
+                                            <p>The music feels tender and nostalgic.</p>
+                                            <img style="display: inline-block;width: 250px;max-height: 400px;float: left;"
+                                                src="./static/cases/example4/4-1-1.jpg">
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div> -->
+                    <!--          End  Example-8-->
+
+                    <!--            Example-9-->
+                    <!-- <h3 class="title is-4" style="margin-top: 3em">• Example-9: Text + Music → Muisc</h3>
+                    <div class="content has-text-justified" style="width: 70pm">
+
+                        <div class="content has-text-justified" style="width: 70pm;margin-top: 1.5em">
+
+                            <div class="wrapper svelte-nab2ao"
+                                style="box-sizing: border-box;border-width: 2px;border-style: solid;border-color: #f66c0f;border-radius: 11px;padding: 25px;padding-top: 30px;padding-bottom: 30px;">
+
+                                <div class="message-wrap svelte-1uvwjgr" style="width: 100%;">
+
+                                    <div class="message-row user-row svelte-1uvwjgr" style="width: 100%;">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/user.png"
+                                                alt="avatar-user">
+                                        </div>
+                                        <div data-testid="user" class="message user svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                      
+                                            <span class="md svelte-9tftx4 chatbot" style="text-align: left;">
+                                                <p>can you generate similar music I might enjoy?</p>
+                                                <p><audio playsinline="" controls="">
+                                                        <source type="audio/wav"
+                                                            src="./static/cases/example5/5-1-1.wav">
+                                                    </audio>
+                                                </p>
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="message-row bot-row svelte-1uvwjgr">
+                                        <div class="avatar-container svelte-1uvwjgr">
+                                            <img class="avatar-image svelte-1uvwjgr" src="./static/images/bot.png"
+                                                alt="avatar-bot">
+                                        </div>
+                                        <div data-testid="bot" class="message bot svelte-1uvwjgr" dir="ltr"
+                                            style="border-style: solid;">
+                                            <span class="md svelte-9tftx4 chatbot">
+                                                <p><audio playsinline="" controls="">
+                                                        <source type="audio/wav"
+                                                            src="./static/cases/example5/5-1-2.wav">
+                                                    </audio>
+                                                </p>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!--          End  Example-9-->
+
+
+                    <!--            Example-10-->
+                    <!-- <h3 class="title is-4" style="margin-top: 3em">• Example-6: Text + Image → Image</h3> -->
+                    <!--          End  Example-10-->
+
+
+                    <br />
+                </div>
+            </div>
+    </section>
+
+
+    <!-- <section class="section">
+        <div class="container is-max-desktop">
+
+                <div class="columns is-centered has-text-centered">
+                    <h2 class="title is-2">Demonstrations</h2>
+                  <br>
+                </div>
+
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                     <h2 class="title is-3">Related Links</h2> 
+
+                    <div class="content has-text-justified" style="font-size: 20px;">
+                        <p>Related Links: 
+                            <a href="https://0nutation.github.io/SpeechGPT.github.io/">SpeechGPT</a>,
+                            <a href="https://github.com/AILab-CVC/SEED">SEED</a>,
+                            <a href="https://codi-gen.github.io/">CoDi</a>,
+                            <a href="https://next-gpt.github.io/">NExTGPT</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section> -->
+
+    </code></pre>
+    </div>
+    </section>
+
+
+    <!-- <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p style="text-align: center;">
+                            The webpage is built based on <a
+                                href="https://github.com/NExT-GPT/NExT-GPT.github.io">NExT-GPT</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer> -->
+
+</body>
+
+</html>
