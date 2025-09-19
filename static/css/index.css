@@ -160,3 +160,12 @@ body {
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+
+
+.video-frame {
+  width: 100%;
+  height: auto;
+  border-radius: 16px; /* soft rounded corners */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25); /* subtle shadow */
+  object-fit: cover; /* keeps aspect ratio, fills nicely */
+}
